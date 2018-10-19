@@ -11,12 +11,12 @@ import pandas as pd
 
 ## Lines to determine optimal for a given mouse
 #%%
-#df = pd.read_pickle('/home/asya/Documents/data/mouse_nose/pandas_data/'+'GluReaCh35')
-#df.index.get_level_values(0).unique()
+df = pd.read_pickle('/home/asya/Documents/data/mouse_nose/pandas_data/'+'GluReaCh25')
+df.index.get_level_values(0).unique()
 #%%
-#print df.loc['dy1',10].index.unique()
+print df.loc['dy4',10].index.unique()
 #%%
-#print df.loc['dy4', 10,355].count()
+print df.loc['dy4', 10,355].count()
 #%%
 plot_deflection_time  = 0
 plot_vertical = 0
@@ -157,7 +157,7 @@ def get_10ms_dataframes(mouse_name = 'GluReaCh25'):
     
     return dfX
     
-def get_stim_current_dataframes(mouse_name = 'GluReaCh35'):  
+def get_stim_current_dataframes(mouse_name = 'GluReaCh25'):  
     df = pd.read_pickle('/home/asya/Documents/data/mouse_nose/pandas_data/'+mouse_name)
     df2 = df.reorder_levels(['file_day','stim_power','stim_duration','stim_current'], axis=0)
     
@@ -178,10 +178,6 @@ def get_stim_current_dataframes(mouse_name = 'GluReaCh35'):
     if mouse_name == 'GluReaCh31':
         dfStimCurrent = df.loc['dy1', 10]
         dfStimPower = df2.loc['dy2']
-    
-    if mouse_name == 'GluReaCh35':
-        dfStimCurrent = df.loc['dy1', 10]
-        dfStimPower = df2.loc['dy1',7.2].append(df2.loc['dy1',7.4])
     
     return dfStimCurrent, dfStimPower
 
